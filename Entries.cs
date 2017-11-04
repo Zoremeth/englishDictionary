@@ -27,7 +27,7 @@ namespace Dictionary
             if (dictionary.ContainsKey(delKey))
             {
                 dictionary.Remove(delKey);
-            }else{
+            } else {
                 Console.WriteLine("Could not find entry.");
             }
                 
@@ -43,7 +43,7 @@ namespace Dictionary
                 string correction = Console.ReadLine();
                 dictionary.Remove(input);
                 dictionary.Add(correction, "Test");
-             }else{
+             } else {
                 Console.WriteLine("Entry does not exist");
             }
         }
@@ -64,6 +64,7 @@ namespace Dictionary
                 Console.WriteLine("{0}", key.Key); 
             }
         }
+
         public void ListValues()
         {
             foreach (var values in dictionary)
