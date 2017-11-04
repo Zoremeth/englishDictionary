@@ -1,13 +1,13 @@
 ﻿    using System;
     using System.Collections.Generic;
 
-    namespace englishDictionary
+    namespace BilingualDictionary
     {
         class Program
         {
             static void Main(string[] args)
             {
-                EnglishDictionary dict = new EnglishDictionary();
+                BilingualDictionary dict = new BilingualDictionary();
                 Console.WriteLine("Welcome to my dictionary!");
                 dict.AddEntry();
                 //dictionary.DeleteEntry();
