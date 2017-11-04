@@ -27,7 +27,9 @@ namespace BilingualDictionary
             if (dataDictionary.ContainsKey(delKey))
             {
                 dataDictionary.Remove(delKey);
-            } else { Console.WriteLine("Could not find entry."); } 
+            } else { 
+                Console.WriteLine("Could not find entry."); 
+            } 
         }
 
         public void ChangeEntry()
@@ -42,7 +44,9 @@ namespace BilingualDictionary
                 string correctedDefinition = Console.ReadLine();
                 dataDictionary.Remove(input);
                 dataDictionary.Add(correctedWord, correctedDefinition);
-             } else { Console.WriteLine("Entry does not exist"); }
+            } else { 
+                Console.WriteLine("Entry does not exist"); 
+            }
         }
         public void ListAll()
         {
