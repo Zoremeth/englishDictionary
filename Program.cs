@@ -1,18 +1,15 @@
 ﻿    using System;
     using System.Collections.Generic;
 
-    namespace BilingualDictionary
+    namespace CodingProject
     {
         class Program
         {
             static void Main(string[] args)
             {
                 BilingualDictionary dict = new BilingualDictionary();
-                Console.WriteLine("Welcome to my dictionary!");
-                dict.AddEntry();
-                //dictionary.DeleteEntry();
-                dict.ChangeEntry();
-                dict.ListAll();
+                //DictionaryInterface();
+
             }   
         }
     }

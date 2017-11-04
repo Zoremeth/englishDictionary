@@ -1,20 +1,14 @@
 using System;
 using System.Collections.Generic;
 
-namespace BilingualDictionary
+namespace CodingProject
 {
     public class BilingualDictionary
     {
         private Dictionary <string, string> dataDictionary = new Dictionary <string, string> (); 
         static void main(){}
-        public void AddEntry()
+        public void AddEntry(string word, string definition)
         {
-            Console.WriteLine("Add entry");
-            Console.WriteLine("Enter word:");
-            string word = Console.ReadLine();
-            Console.WriteLine("Enter definition:");
-            string definition = Console.ReadLine();
-            Console.WriteLine("Adding entry: {0}, {1}", word, definition);
             dataDictionary.Add(word, definition);
         }
 
