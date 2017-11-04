@@ -6,9 +6,7 @@ namespace BilingualDictionary
     public class BilingualDictionary
     {
         private Dictionary <string, string> dataDictionary = new Dictionary <string, string> (); 
-        static void main()
-        {
-        }
+        static void main(){}
         public void AddEntry()
         {
             Console.WriteLine("Add entry");
@@ -19,7 +17,7 @@ namespace BilingualDictionary
             Console.WriteLine("Adding entry: {0}, {1}", word, definition);
             dataDictionary.Add(word, definition);
         }
-        
+
         public void DeleteEntry()
         {
             Console.WriteLine("What entry would you like to delete?:");
@@ -29,12 +27,9 @@ namespace BilingualDictionary
             if (dataDictionary.ContainsKey(delKey))
             {
                 dataDictionary.Remove(delKey);
-            } else {
-                Console.WriteLine("Could not find entry.");
-            }
-                
+            } else { Console.WriteLine("Could not find entry."); } 
         }
-            
+
         public void ChangeEntry()
         {
             Console.WriteLine("What value would you like to change?");
@@ -42,34 +37,34 @@ namespace BilingualDictionary
             string input = Console.ReadLine();
             if(dataDictionary.ContainsKey(input)){
                 Console.WriteLine("What would you like to change it to?");
-                string correction = Console.ReadLine();
+                string correctedWord = Console.ReadLine();
+                Console.WriteLine("What would you like to change the definition to?");
+                string correctedDefinition = Console.ReadLine();
                 dataDictionary.Remove(input);
-                dataDictionary.Add(correction, "Test");
-             } else {
-                Console.WriteLine("Entry does not exist");
-            }
+                dataDictionary.Add(correctedWord, correctedDefinition);
+             } else { Console.WriteLine("Entry does not exist"); }
         }
         public void ListAll()
         {
             Console.WriteLine("Currently stored entries:");
-            foreach (var entries in dataDictionary)
+            foreach (var data in dataDictionary)
             {
-                Console.WriteLine("{0}, {1}", entries.Key, entries.Value);
+                Console.WriteLine("{0}, {1}", data.Key, data.Value);
             }
         }
 
         public void ListKeys()
         {
-            foreach (var key in dataDictionary)
+            foreach (var data in dataDictionary)
             {
-                Console.WriteLine("{0}", key.Key); 
+                Console.WriteLine("{0}", data.Key); 
             }
         }
         public void ListValues()
         {
-            foreach (var values in dataDictionary)
+            foreach (var data in dataDictionary)
             {
-                Console.WriteLine("{0}", values.Value); 
+                Console.WriteLine("{0}", data.Value); 
             }
         }
     }
