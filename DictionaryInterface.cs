@@ -2,11 +2,13 @@ using System;
 
 namespace CodingProject
 {
-    class DictionaryInterface
-    {
-        static void main()
+    public class DictionaryInterface
+    { 
+        BilingualDictionary dict = new BilingualDictionary();
+        public void mainInterface()
         {
-            
+            Console.WriteLine("-----------------------\nWelcome to the dictionary\nPlease select an option:");
+            dict.List(1);
         }
     }
 }
