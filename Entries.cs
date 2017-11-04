@@ -1,16 +1,12 @@
 using System;
+using System.Collections.Generic;
 
 namespace Dictionary
 {
-    class Entries
+    public class Entries
     {
-        static void Main()
-        {
-            Dictionary defineDictionary = new Dictionary();
-            var dictionary = defineDictionary.englishDictionary;
+        private Dictionary<string, string> dictionary = new Dictionary<string, string>();
 
-
-        }
         public void AddEntry()
         {
             Console.WriteLine("Add entry");
@@ -19,7 +15,7 @@ namespace Dictionary
             Console.WriteLine("Enter definition:");
             string definition = Console.ReadLine();
             Console.WriteLine("Adding entry: {0}, {1}", word, definition);
-            Dictionary.Add(word, definition);
+            dictionary.Add(word, definition);
         }
         
         public void DeleteEntry()
