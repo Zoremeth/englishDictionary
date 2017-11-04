@@ -9,12 +9,11 @@
             {
                 BilingualDictionary dict = new BilingualDictionary();
                 dict.AddEntry("Hello", "World");
-                dict.ListAll();
+                dict.List(1);
                 Console.ReadKey(); //Just for temp pause
                 dict.ChangeEntry("Hello", "Best", "World");
-                dict.ListAll();
+                dict.List(1);
                 //DictionaryInterface();
-
             }   
         }
     }

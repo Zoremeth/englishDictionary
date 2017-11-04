@@ -13,14 +13,7 @@ namespace CodingProject
 
         bool DeleteEntry(string delKey)
         {
-            bool deleted = false;
-            if (dataDictionary.ContainsKey(delKey))
-            {
-                dataDictionary.Remove(delKey);
-                return deleted = true;
-            } else { 
-                return deleted = false;
-            } 
+            return dataDictionary.Remove(delKey);
         }
 
         public void ChangeEntry(string inputKey, string correctedWord, string correctedDefinition)
@@ -29,28 +22,38 @@ namespace CodingProject
                 AddEntry(correctedWord, correctedDefinition);
             }
         }
-        public void ListAll()
+        public void List(int ListType)
         {
-            Console.WriteLine("Currently stored entries:");
-            foreach (var data in dataDictionary)
+            switch (ListType)
             {
-                Console.WriteLine("{0}, {1}", data.Key, data.Value);
-            }
-        }
+                case 1:
+                    //Print Keys & Values
+                    foreach (var data in dataDictionary)
+                    {
+                        Console.WriteLine("{0}, {1}", data.Key, data.Value);
+                    }
+                    break;
 
-        public void ListKeys()
-        {
-            foreach (var data in dataDictionary)
-            {
-                Console.WriteLine("{0}", data.Key); 
+                case 2:
+                    //Print Keys
+                    foreach (var data in dataDictionary)
+                    {
+                        Console.WriteLine("{0}", data.Key);
+                    }
+                    break;
+                
+                case 3:
+                    //Print Values
+                    foreach (var data in dataDictionary)
+                    {
+                        Console.WriteLine("{0}", data.Value);
+                    }
+                    break;
+                default:
+                    //Do nothing
+                    break;
             }
         }
-        public void ListValues()
-        {
-            foreach (var data in dataDictionary)
-            {
-                Console.WriteLine("{0}", data.Value); 
-            }
-        }
+        
     }
 }
