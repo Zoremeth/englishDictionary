@@ -2,7 +2,7 @@ using System;
 
 namespace Dictionary
 {
-    class Entries
+    public class Entries
     {
         static void Main()
         {
