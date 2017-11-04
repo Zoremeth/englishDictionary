@@ -6,40 +6,27 @@ namespace CodingProject
     public class BilingualDictionary
     {
         private Dictionary <string, string> dataDictionary = new Dictionary <string, string> (); 
-        static void main(){}
         public void AddEntry(string word, string definition)
         {
             dataDictionary.Add(word, definition);
         }
 
-        public void DeleteEntry()
+        bool DeleteEntry(string delKey)
         {
-            Console.WriteLine("What entry would you like to delete?:");
-            ListKeys();
-            string delKey = Console.ReadLine();
-            Console.WriteLine("Deleting entry: {0}", delKey);
+            bool deleted = false;
             if (dataDictionary.ContainsKey(delKey))
             {
                 dataDictionary.Remove(delKey);
+                return deleted = true;
             } else { 
-                Console.WriteLine("Could not find entry."); 
+                return deleted = false;
             } 
         }
 
-        public void ChangeEntry()
+        public void ChangeEntry(string inputKey, string correctedWord, string correctedDefinition)
         {
-            Console.WriteLine("What value would you like to change?");
-            ListKeys();
-            string input = Console.ReadLine();
-            if(dataDictionary.ContainsKey(input)){
-                Console.WriteLine("What would you like to change it to?");
-                string correctedWord = Console.ReadLine();
-                Console.WriteLine("What would you like to change the definition to?");
-                string correctedDefinition = Console.ReadLine();
-                dataDictionary.Remove(input);
-                dataDictionary.Add(correctedWord, correctedDefinition);
-            } else { 
-                Console.WriteLine("Entry does not exist"); 
+            if ( DeleteEntry(inputKey) == true ){
+                AddEntry(correctedWord, correctedDefinition);
             }
         }
         public void ListAll()
