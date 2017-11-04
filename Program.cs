@@ -1,19 +1,19 @@
 ﻿    using System;
     using System.Collections.Generic;
 
-    namespace Dictionary
+    namespace englishDictionary
     {
         class Program
         {
             static void Main(string[] args)
             {
-                Entries entry = new Entries(); 
+                EnglishDictionary dict = new EnglishDictionary();
                 Console.WriteLine("Welcome to my dictionary!");
-                entry.AddEntry();
+                dict.AddEntry();
                 //dictionary.DeleteEntry();
                 //Console.ReadKey();
-                entry.ChangeEntry();
-                entry.ListAll();
+                dict.ChangeEntry();
+                dict.ListAll();
             }   
         }
     }

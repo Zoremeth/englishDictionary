@@ -1,17 +1,82 @@
 using System;
 using System.Collections.Generic;
 
-namespace Dictionary
+namespace englishDictionary
 {
-    class Dictionary
+    public class EnglishDictionary
     {
         static void main()
         {
-            
+   
         }
-        public void defineDictionary()
+
+        public void initEnglishDictionary()
         {
-            Dictionary <string, string> englishDictionary = new Dictionary <string, string> ();
+            Dictionary <string, string> dataEnglishDictionary = new Dictionary <string, string> (); 
+        }
+        public void AddEntry()
+        {
+            Console.WriteLine("Add entry");
+            Console.WriteLine("Enter word:");
+            string word = Console.ReadLine();
+            Console.WriteLine("Enter definition:");
+            string definition = Console.ReadLine();
+            Console.WriteLine("Adding entry: {0}, {1}", word, definition);
+            //dataEnglishDictionary does not exist in current context
+            dataEnglishDictionary.Add(word, definition);
+        }
+        
+        public void DeleteEntry()
+        {
+            Console.WriteLine("What entry would you like to delete?:");
+            ListKeys();
+            string delKey = Console.ReadLine();
+            Console.WriteLine("Deleting entry: {0}", delKey);
+            if (dictionary.ContainsKey(delKey))
+            {
+                dictionary.Remove(delKey);
+            }else{
+                Console.WriteLine("Could not find entry.");
+            }
+                
+        }
+            
+        public void ChangeEntry()
+        {
+            Console.WriteLine("What value would you like to change?");
+            ListKeys();
+            string input = Console.ReadLine();
+            if(dictionary.ContainsKey(input)){
+                Console.WriteLine("What would you like to change it to?");
+                string correction = Console.ReadLine();
+                dictionary.Remove(input);
+                dictionary.Add(correction, "Test");
+             }else{
+                Console.WriteLine("Entry does not exist");
+            }
+        }
+        public void ListAll()
+        {
+            Console.WriteLine("Currently stored entries:");
+            foreach (var entries in dictionary)
+            {
+                Console.WriteLine("{0}, {1}", entries.Key, entries.Value);
+            }
+        }
+
+        public void ListKeys()
+        {
+            foreach (var key in dictionary)
+            {
+                Console.WriteLine("{0}", key.Key); 
+            }
+        }
+        public void ListValues()
+        {
+            foreach (var values in dictionary)
+            {
+                Console.WriteLine("{0}", values.Value); 
+            }
         }
     }
 }
