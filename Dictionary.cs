@@ -49,6 +49,7 @@ namespace CodingProject
                         Console.WriteLine("{0}", data.Value);
                     }
                     break;
+                
                 default:
                     //Do nothing
                     break;
