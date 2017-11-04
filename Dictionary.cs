@@ -22,37 +22,38 @@ namespace CodingProject
                 AddEntry(correctedWord, correctedDefinition);
             }
         }
-        public void List(int ListType)
-        {
-            switch (ListType)
-            {
-                case 1:
-                    //Print Keys & Values
-                    foreach (var data in dataDictionary)
-                    {
-                        Console.WriteLine("{0}, {1}", data.Key, data.Value);
-                    }
-                    break;
 
-                case 2:
-                    //Print Keys
-                    foreach (var data in dataDictionary)
-                    {
-                        Console.WriteLine("{0}", data.Key);
-                    }
-                    break;
-                
-                case 3:
-                    //Print Values
-                    foreach (var data in dataDictionary)
-                    {
-                        Console.WriteLine("{0}", data.Value);
-                    }
-                    break;
-                
-                default:
-                    //Do nothing
-                    break;
+        public enum ListFormat
+        {
+            All,
+            Keys,
+            Values,
+        }
+        public void List(ListFormat format)
+        {
+            foreach (var entry in dataDictionary)
+            {
+                switch (format)
+                {
+                    case ListFormat.All:
+                        //Print Keys & Values
+                            Console.WriteLine("{0}, {1}", entry.Key, entry.Value);
+                        break;
+
+                    case ListFormat.Keys:
+                        //Print Keys
+                            Console.WriteLine("{0}", entry.Key);
+                        break;
+                    
+                    case ListFormat.Values:
+                        //Print Values
+                            Console.WriteLine("{0}", entry.Value);
+                        break;
+                    
+                    default:
+                        //Do nothing
+                        break;
+                }
             }
         }
         

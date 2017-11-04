@@ -8,7 +8,7 @@ namespace CodingProject
         public void mainInterface()
         {
             Console.WriteLine("-----------------------\nWelcome to the dictionary\nPlease select an option:");
-            dict.List(1);
+            dict.List(ListFormat.All);
         }
     }
 }
