@@ -4,6 +4,9 @@ namespace Dictionary
 {
     class Entries
     {
+        // What is the purpose of this piece? I'd recommend to keep all data locally 
+        // rather in another static class. Components should be encapsulated and not depend on others,
+        // especially when it comes to storing data
         static void Main()
         {
             Dictionary defineDictionary = new Dictionary();
