@@ -8,6 +8,7 @@ namespace CodingProject
         DictionaryStorage dictStorage = new DictionaryStorage();
         public void Run()
         {
+            dictStorage.loadData();
             dict.AddEntry("Hello", "World");
             dict.AddEntry("Henlo", "Wereld");
             Console.WriteLine("-----------------------\nWelcome to the dictionary\nPlease select an option:");
