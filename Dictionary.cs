@@ -22,7 +22,7 @@ namespace CodingProject
 
         public void ChangeEntry(string inputKey, string correctedWord, string correctedDefinition)
         {
-            if ( DeleteEntry(inputKey) == true ){
+            if (DeleteEntry(inputKey)){
                 AddEntry(correctedWord, correctedDefinition);
             }
         }
