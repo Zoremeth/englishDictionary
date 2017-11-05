@@ -14,7 +14,11 @@
                 dict.AddEntry("Hello", "World");
                 dictInterface.mainInterface();
                 Console.WriteLine("Back to Program.cs");
-                dict.List(1);
+                Console.WriteLine("Print keys:");
+                foreach (var entry in dict.Entries)
+                {
+                    Console.WriteLine("{0}, {1}", entry.Key, entry.Value);
+                }
                 //dict.List(1);
                 //Console.ReadKey(); //Just for temp pause
                 //dict.ChangeEntry("Hello", "Best", "World");
