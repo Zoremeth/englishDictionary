@@ -13,8 +13,7 @@ namespace CodingProject
             //Load in data
             var dict = dictStorage.loadData(@currentDir + "\\word.txt");
             
-            //Add test data
-            //dict.AddEntry("Hello", "World");
+            dict.AddEntry("Hello", "World");
             
             //Check what is saved in the dictionary
             foreach (var entry in dict.Entries)

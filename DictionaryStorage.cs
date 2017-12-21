@@ -5,27 +5,22 @@ namespace CodingProject
 {
     class DictionaryStorage
     {
-        string currentDir = Directory.GetCurrentDirectory();
-        public BilingualDictionary loadData(string DictionaryStorage)
+
+        public BilingualDictionary loadData(string dataDictionary)
         {
             var dict = new BilingualDictionary();
            //Check if files exist.
-           if(!System.IO.File.Exists(@currentDir + "\\word.txt"))
+           if(!System.IO.File.Exists(dataDictionary))
                 {
-                    System.IO.File.Create(@currentDir + "\\word.txt");
-                    if(!System.IO.File.Exists(@currentDir + "\\definition.txt"))
-                    {
-                        System.IO.File.Create(@currentDir + "\\definition.txt");
-                    }
+                    System.IO.File.Create(dataDictionary);
                 }
-
             else {
-                    // This will not work. It will say that the key already exists for some reason. 
-                    string[] words = System.IO.File.ReadAllLines(@currentDir + "\\word.txt");
-                    string[] definitions = System.IO.File.ReadAllLines(@currentDir + "\\definition.txt"); 
-                    for (int i = 0; i < definitions.Length; i++){
-                        dict.AddEntry(words[i], definitions[i]);
-                    }
+                string[] entries = System.IO.File.ReadAllLines(dataDictionary);
+                foreach (string entry in entries)
+                {
+                    string[] splitEntry = entry.Split(new Char[] { '|' });
+                    dict.AddEntry(splitEntry[0], splitEntry[1]);
+                }
             }
             return dict;
         }
