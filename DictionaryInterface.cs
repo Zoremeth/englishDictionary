@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace CodingProject
 {
@@ -6,17 +7,26 @@ namespace CodingProject
     { 
         BilingualDictionary dict = new BilingualDictionary();
         DictionaryStorage dictStorage = new DictionaryStorage();
+        string currentDir = Directory.GetCurrentDirectory();
         public void Run()
         {
+            //Load in data
             dictStorage.loadData();
-            dict.AddEntry("Hello", "World");
-            dict.AddEntry("Henlo", "Wereld");
-            Console.WriteLine("-----------------------\nWelcome to the dictionary\nPlease select an option:");
+            
+            //Add test data
+            //dict.AddEntry("Hello", "World");
+            
+            //Check what is saved in the dictionary
             foreach (var entry in dict.Entries)
             {
-                Console.WriteLine("{0}", entry.Key);
+                Console.WriteLine("{0}, {1}", entry.Key, entry.Value);
             }
-            dictStorage.saveData();
+
+            //Save data 
+            //dictStorage.saveData();
+
+            //Interface stuff
+            //Console.WriteLine("-----------------------\nWelcome to the dictionary\nPlease select an option:");
         }
     }
 }

@@ -1,47 +1,54 @@
 using System;
+using System.IO;
 
 namespace CodingProject
 {
     class DictionaryStorage
     {
         BilingualDictionary dict = new BilingualDictionary();
+        string currentDir = Directory.GetCurrentDirectory();
         public void loadData()
         {
-            //Sorry for disugstingly long file names!! And nested if statements :p
-            if(!System.IO.File.Exists(@"C:\Users\Zoremeth\Edu\Personal Projects\Dictionary\word.txt")){
-                System.IO.File.Create(@"C:\Users\Zoremeth\Edu\Personal Projects\Dictionary\word.txt");
-                if(!System.IO.File.Exists(@"C:\Users\Zoremeth\Edu\Personal Projects\Dictionary\definition.txt")){
-                    System.IO.File.Create(@"C:\Users\Zoremeth\Edu\Personal Projects\Dictionary\definition.txt");
-                }
-            } else {
-                foreach(string word in System.IO.File.ReadAllLines(@"C:\Users\Zoremeth\Edu\Personal Projects\Dictionary\word.txt"))
+           //Check if files exist.
+           if(!System.IO.File.Exists(@currentDir + "\\word.txt"))
                 {
-                    foreach(string definition in System.IO.File.ReadAllLines(@"C:\Users\Zoremeth\Edu\Personal Projects\Dictionary\definition.txt"))
+                    System.IO.File.Create(@currentDir + "\\word.txt");
+                    if(!System.IO.File.Exists(@currentDir + "\\definition.txt"))
+                    {
+                        System.IO.File.Create(@currentDir + "\\definition.txt");
+                    }
+                }
+
+                else {
+                // This will not work. It will say that the key already exists for some reason. 
+                foreach(string word in System.IO.File.ReadAllLines(@currentDir + "\\word.txt"))
+                {
+                    foreach(string definition in System.IO.File.ReadAllLines(@currentDir + "\\definition.txt"))
                     {
                         dict.AddEntry(word, definition);
                     }
                 }
             }
         }   
+        //First focusing on the loading system.
+        // public void saveData()
+        // {
+        //     foreach(var entry in dict.Entries)
+        //     {
+        //         //Check if the key exists not to make duplicates, if not run command
+        //         if(!System.IO.File.ReadAllText(@currentDir + "\\word.txt").Contains(entry.Key))
+        //         {
+        //             System.IO.File.AppendAllText(@currentDir + "\\word.txt", entry.Key);
+        //         }
 
-        //Need to make a save location, current location is for testing
-        public void saveData()
-        {
-            foreach(var entry in dict.Entries)
-            {
-                //Check if the key exists not to make duplicates, if not run command
-                if(!System.IO.File.ReadAllText(@"C:\Users\Zoremeth\Edu\Personal Projects\Dictionary\word.txt").Contains(entry.Key))
-                {
-                    System.IO.File.AppendAllText(@"C:\Users\Zoremeth\Edu\Personal Projects\Dictionary\word.txt", entry.Key);
-                }
-
-                if(!System.IO.File.ReadAllText(@"C:\Users\Zoremeth\Edu\Personal Projects\Dictionary\definition.txt").Contains(entry.Value))
-                {
-                    System.IO.File.AppendAllText(@"C:\Users\Zoremeth\Edu\Personal Projects\Dictionary\definition.txt", entry.Value);
-                }
-            }
-        }     
+        //         if(!System.IO.File.ReadAllText(@currentDir + "\\definition.txt").Contains(entry.Value))
+        //         {
+        //             System.IO.File.AppendAllText(@currentDir + "\\definition.txt", entry.Value);
+        //         }
+        //     }
+        // }  
     }
-}
+}   
+
 
 

@@ -23,6 +23,12 @@ namespace CodingProject
         public void ChangeEntry(string inputKey, string correctedWord, string correctedDefinition)
         {
             if (DeleteEntry(inputKey)){
+                if(correctedWord == ""){
+                    AddEntry(inputKey, correctedDefinition);
+                }else if(correctedDefinition == "")
+                {
+                    Console.WriteLine("Please fill in a definition");
+                }else
                 AddEntry(correctedWord, correctedDefinition);
             }
         }
