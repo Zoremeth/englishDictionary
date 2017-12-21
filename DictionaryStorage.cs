@@ -5,10 +5,10 @@ namespace CodingProject
 {
     class DictionaryStorage
     {
-        BilingualDictionary dict = new BilingualDictionary();
         string currentDir = Directory.GetCurrentDirectory();
-        public void loadData()
+        public BilingualDictionary loadData(string DictionaryStorage)
         {
+            var dict = new BilingualDictionary();
            //Check if files exist.
            if(!System.IO.File.Exists(@currentDir + "\\word.txt"))
                 {
@@ -19,17 +19,17 @@ namespace CodingProject
                     }
                 }
 
-                else {
-                // This will not work. It will say that the key already exists for some reason. 
-                foreach(string word in System.IO.File.ReadAllLines(@currentDir + "\\word.txt"))
-                {
-                    foreach(string definition in System.IO.File.ReadAllLines(@currentDir + "\\definition.txt"))
-                    {
-                        dict.AddEntry(word, definition);
+            else {
+                    // This will not work. It will say that the key already exists for some reason. 
+                    string[] words = System.IO.File.ReadAllLines(@currentDir + "\\word.txt");
+                    string[] definitions = System.IO.File.ReadAllLines(@currentDir + "\\definition.txt"); 
+                    for (int i = 0; i < definitions.Length; i++){
+                        dict.AddEntry(words[i], definitions[i]);
                     }
-                }
             }
-        }   
+            return dict;
+        }
+    }   
         //First focusing on the loading system.
         // public void saveData()
         // {
@@ -47,8 +47,7 @@ namespace CodingProject
         //         }
         //     }
         // }  
-    }
-}   
+}
 
 
 

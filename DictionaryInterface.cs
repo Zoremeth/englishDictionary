@@ -11,7 +11,7 @@ namespace CodingProject
         public void Run()
         {
             //Load in data
-            dictStorage.loadData();
+            var dict = dictStorage.loadData(@currentDir + "\\word.txt");
             
             //Add test data
             //dict.AddEntry("Hello", "World");
