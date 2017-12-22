@@ -14,7 +14,7 @@ namespace CodingProject
             dataDictionary.Add(word, definition);
         }
 
-        bool DeleteEntry(string delKey)
+        public bool DeleteEntry(string delKey)
         {
             return dataDictionary.Remove(delKey);
         }
@@ -44,6 +44,15 @@ namespace CodingProject
         {
             dataDictionary.TryGetValue(inputKey, out string definition);
             return definition;
+        }
+
+        public void ListAll()
+        {
+            Console.WriteLine("All entries:");
+            foreach (var entry in dataDictionary)
+            { 
+                Console.WriteLine("{0}, {1}", entry.Key, entry.Value);
+            }
         }
     }
 }
