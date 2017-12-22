@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 
 namespace CodingProject
 {
@@ -23,25 +24,34 @@ namespace CodingProject
                 }
             }
             return dict;
-        }
-    }   
-        //First focusing on the loading system.
-        // public void saveData()
-        // {
-        //     foreach(var entry in dict.Entries)
-        //     {
-        //         //Check if the key exists not to make duplicates, if not run command
-        //         if(!System.IO.File.ReadAllText(@currentDir + "\\word.txt").Contains(entry.Key))
-        //         {
-        //             System.IO.File.AppendAllText(@currentDir + "\\word.txt", entry.Key);
-        //         }
-
-        //         if(!System.IO.File.ReadAllText(@currentDir + "\\definition.txt").Contains(entry.Value))
-        //         {
-        //             System.IO.File.AppendAllText(@currentDir + "\\definition.txt", entry.Value);
-        //         }
-        //     }
-        // }  
+        }  
+        // First focusing on the loading system.
+        public void saveData(string dataDictionary)
+        {
+            bool backupData(){
+                System.IO.File.Move(dataDictionary, dataDictionary + ".bak");
+                if(System.IO.File.Exists(dataDictionary))
+                    {
+                        return false; 
+                    }else {
+                    System.IO.File.Create(dataDictionary);
+                    return true;
+                }  
+            }
+            bool backupSuccess = backupData();
+            var dict = new BilingualDictionary();
+            //Use IENumerable + Zip function.
+            var mergedEntries = dict.Entries.Select(entry => entry.Key + "|" + entry.Value);
+            if(backupSuccess == true){
+                foreach(var entry in mergedEntries)
+                {
+                    System.IO.File.AppendAllLines(dataDictionary, mergedEntries);
+                }
+            }else{
+                Console.WriteLine("Saving failed.");
+            }
+        } 
+    }      
 }
 
 

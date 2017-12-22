@@ -7,8 +7,6 @@ namespace CodingProject
     {
         private Dictionary <string, string> dataDictionary = new Dictionary <string, string> (); 
         public IEnumerable<KeyValuePair<string, string>> Entries => dataDictionary;
-        public IEnumerable<string> Words => dataDictionary.Keys;
-        public IEnumerable<string> definition => dataDictionary.Values;
 
         public void AddEntry(string word, string definition)
         {
