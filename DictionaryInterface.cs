@@ -13,8 +13,9 @@ namespace CodingProject
             {
                 Console.WriteLine("{0}, {1}", entry.Key, entry.Value);
             }
-            dictStorage.saveData(dict, Path.Combine(Directory.GetCurrentDirectory(), "entries.txt"));
-
+            //dictStorage.saveData(dict, Path.Combine(Directory.GetCurrentDirectory(), "entries.txt"));
+            var result = dict.searchWord(dict, "rolling");
+            Console.WriteLine("rolling, {0}", result);
             //Interface stuff
             //Console.WriteLine("-----------------------\nWelcome to the dictionary\nPlease select an option:");
         }

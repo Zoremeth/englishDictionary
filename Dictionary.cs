@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CodingProject
 {
@@ -35,6 +36,11 @@ namespace CodingProject
                     AddEntry(correctedWord, correctedDefinition);
                 }
             }
+        }
+        public string searchWord(BilingualDictionary dict, string inputKey)
+        {
+            dict.dataDictionary.TryGetValue(inputKey, out string definition);
+            return definition;
         }
     }
 }
