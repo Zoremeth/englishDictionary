@@ -5,33 +5,33 @@ namespace CodingProject
 {
     public class BilingualDictionary
     {
-        private Dictionary <string, string> dataDictionary = new Dictionary <string, string> (); 
+        private Dictionary<string, string> dataDictionary = new Dictionary<string, string> ();
         public IEnumerable<KeyValuePair<string, string>> Entries => dataDictionary;
 
-        public void AddEntry(string word, string definition)
+        public void AddEntry (string word, string definition)
         {
-            dataDictionary.Add(word, definition);
+            dataDictionary.Add (word, definition);
         }
 
-        bool DeleteEntry(string delKey)
+        bool DeleteEntry (string delKey)
         {
-            return dataDictionary.Remove(delKey);
+            return dataDictionary.Remove (delKey);
         }
 
-        public void ChangeEntry(string inputKey, string correctedWord, string correctedDefinition)
+        public void ChangeEntry (string inputKey, string correctedWord, string correctedDefinition)
         {
-            if (DeleteEntry(inputKey))
+            if (DeleteEntry (inputKey))
             {
-                if(correctedWord == "")
+                if (correctedWord == "")
                 {
-                    AddEntry(inputKey, correctedDefinition);
+                    AddEntry (inputKey, correctedDefinition);
                 }
-                else if(correctedDefinition == "")
+                else if (correctedDefinition == "")
                 {
-                    Console.WriteLine("Please fill in a definition");
+                    Console.WriteLine ("Please fill in a definition");
                 }
                 else
-                AddEntry(correctedWord, correctedDefinition);
+                    AddEntry (correctedWord, correctedDefinition);
             }
         }
     }
