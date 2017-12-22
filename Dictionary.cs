@@ -11,7 +11,15 @@ namespace CodingProject
 
         public void AddEntry(string word, string definition)
         {
-            dataDictionary.Add(word, definition);
+            dataDictionary.TryGetValue(word, out string check);
+            if (check == null)
+            {
+                dataDictionary.Add(word, definition);
+            }
+            else
+            {
+                Console.WriteLine("This entry already exists.");
+            }
         }
 
         public bool DeleteEntry(string delKey)
@@ -21,7 +29,7 @@ namespace CodingProject
 
         public void ChangeEntry(string inputKey, string correctedWord, string correctedDefinition)
         {
-            if ( correctedDefinition == "")
+            if (correctedDefinition == "")
             {
                 Console.WriteLine("Definition can not be empty.");
             }
@@ -50,7 +58,7 @@ namespace CodingProject
         {
             Console.WriteLine("All entries:");
             foreach (var entry in dataDictionary)
-            { 
+            {
                 Console.WriteLine("{0}, {1}", entry.Key, entry.Value);
             }
         }

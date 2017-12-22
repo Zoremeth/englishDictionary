@@ -9,16 +9,44 @@ namespace CodingProject
         public void Run()
         {
             var dict = dictStorage.loadData(Path.Combine(Directory.GetCurrentDirectory(), "entries.txt"));
-            Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Green;
-            void Ui(){
+            var isRunning = true;
+            do
+            {
                 Console.Clear();
-                Console.WriteLine("-----------------------\n|   Welcome to the dictionary\n|   Please select an option:");
-                Console.WriteLine("|    1. Entries");
-                Console.WriteLine("|    2. Search");
-                Console.WriteLine("|    3. Quit");
-                Console.WriteLine("-----------------------");
-            }
+                Console.WriteLine("----------------------------------\n|   Welcome to the dictionary    |\n|   Please select an option:     |");
+                Console.WriteLine("|    1. Entries                  |");
+                Console.WriteLine("|    2. Search                   |");
+                Console.WriteLine("|    3. Quit                     |");
+                Console.WriteLine("----------------------------------");
+                var inputMain = Console.ReadLine();
+                switch (inputMain)
+                {
+                    case "1":
+                        UiEntry();
+                        break;
+                    case "2":
+                        Console.WriteLine("Type in word to search:");
+                        var inputKey = Console.ReadLine();
+                        string result = dict.SearchWord(inputKey);
+                        if (result == null)
+                        {
+                            Console.WriteLine("Could not find entry.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Word: {0}\nDefinition: {1}", inputKey, result);
+                        }
+                        Console.WriteLine("Press any key to return.");
+                        Console.ReadKey();
+                        break;
+                    case "3":
+                        Console.Clear();
+                        Console.WriteLine("Quitting.");
+                        isRunning = false;
+                        break;
+                }
+            } while (isRunning);
             void UiEntry()
             {
                 Console.Clear();
@@ -29,16 +57,15 @@ namespace CodingProject
                 Console.WriteLine("|    3. Change entry");
                 Console.WriteLine("-----------------------");
                 var inputEntry = Console.ReadLine();
-                switch ( inputEntry )
+                switch (inputEntry)
                 {
                     case "1":
                         Console.Clear();
                         dict.ListAll();
                         Console.WriteLine("Press any key to return.");
                         Console.ReadKey();
-                        Ui();
                         break;
-                    
+
                     case "2":
                         Console.Clear();
                         Console.WriteLine("Please specify the entry you would like to add:");
@@ -48,19 +75,23 @@ namespace CodingProject
                         dict.AddEntry(word, definition);
                         Console.WriteLine("Entry added. Press any key to return.");
                         Console.ReadKey();
-                        Ui();
                         break;
 
                     case "3":
                         Console.Clear();
                         Console.WriteLine("Please specify the entry you would like to delete:");
                         string deleteKey = Console.ReadLine();
-                        dict.DeleteEntry(deleteKey);
-                        Console.WriteLine("Entry deleted. Press any key to return.");
-                        Console.ReadKey();
-                        Ui();
+                        if (dict.DeleteEntry(deleteKey) == false)
+                        {
+                            Console.WriteLine("Entry not found");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Entry deleted. Press any key to return.");
+                            Console.ReadKey();
+                        }
                         break;
-                    
+
                     case "4":
                         Console.Clear();
                         Console.WriteLine("Please specify the entry you would like to edit:");
@@ -72,39 +103,10 @@ namespace CodingProject
                         dict.ChangeEntry(inputKey, correctedWord, correctedDefinition);
                         Console.WriteLine("Entry changed. Press any key to return.");
                         Console.ReadKey();
-                        Ui();
                         break;
-                }    
+                }
             }
-            Ui();
-            var inputMain = Console.ReadLine();
-            switch( inputMain )
-            {
-                case "1":
-                    UiEntry();
-                    break;
-                case "2":
-                    Console.WriteLine("Type in word to search:");
-                    var inputKey = Console.ReadLine();
-                    string result = dict.SearchWord(inputKey);
-                    if( result == "")
-                    {
-                        Console.WriteLine("Word: {0}\nDefinition: {1}", inputKey, result);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Could not find entry.");
-                    }
-                    Console.WriteLine("Press any key to return.");
-                    Console.ReadKey();
-                    Ui();
-                    break;
-                case "3":
-                    Console.Clear();
-                    Console.WriteLine("Quitting.");
-                    break;
-            }
-            dictStorage.saveData(dict, Path.Combine(Directory.GetCurrentDirectory(), "entries.txt"));            
+            dictStorage.saveData(dict, Path.Combine(Directory.GetCurrentDirectory(), "entries.txt"));
         }
     }
 }
