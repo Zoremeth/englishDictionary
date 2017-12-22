@@ -20,8 +20,10 @@ namespace CodingProject
 
         public void ChangeEntry(string inputKey, string correctedWord, string correctedDefinition)
         {
-            if (DeleteEntry(inputKey)){
-                if(correctedWord == ""){
+            if (DeleteEntry(inputKey))
+            {
+                if(correctedWord == "")
+                {
                     AddEntry(inputKey, correctedDefinition);
                 }else if(correctedDefinition == "")
                 {

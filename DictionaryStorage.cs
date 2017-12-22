@@ -12,10 +12,9 @@ namespace CodingProject
             var dict = new BilingualDictionary();
            //Check if files exist.
            if(!System.IO.File.Exists(dataDictionary))
-                {
-                    System.IO.File.Create(dataDictionary);
-                }
-            else {
+            {
+                System.IO.File.Create(dataDictionary);
+            }else {
                 string[] entries = System.IO.File.ReadAllLines(dataDictionary);
                 foreach (string entry in entries)
                 {
