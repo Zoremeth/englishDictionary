@@ -21,25 +21,28 @@ namespace CodingProject
 
         public void ChangeEntry(string inputKey, string correctedWord, string correctedDefinition)
         {
-            if (DeleteEntry(inputKey))
+            if ( correctedDefinition == "")
             {
-                if (correctedWord == "")
+                Console.WriteLine("Definition can not be empty.");
+            }
+            else
+            {
+                if (DeleteEntry(inputKey))
                 {
-                    AddEntry(inputKey, correctedDefinition);
-                }
-                else if (correctedDefinition == "")
-                {
-                    Console.WriteLine("Please fill in a definition");
-                }
-                else
-                {
-                    AddEntry(correctedWord, correctedDefinition);
+                    if (correctedWord == "")
+                    {
+                        AddEntry(inputKey, correctedDefinition);
+                    }
+                    else
+                    {
+                        AddEntry(correctedWord, correctedDefinition);
+                    }
                 }
             }
         }
-        public string searchWord(BilingualDictionary dict, string inputKey)
+        public string SearchWord(string inputKey)
         {
-            dict.dataDictionary.TryGetValue(inputKey, out string definition);
+            dataDictionary.TryGetValue(inputKey, out string definition);
             return definition;
         }
     }
