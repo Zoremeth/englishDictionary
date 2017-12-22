@@ -31,7 +31,9 @@ namespace CodingProject
                     Console.WriteLine("Please fill in a definition");
                 }
                 else
+                {
                     AddEntry(correctedWord, correctedDefinition);
+                }
             }
         }
     }

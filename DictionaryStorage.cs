@@ -10,12 +10,7 @@ namespace CodingProject
         public BilingualDictionary loadData(string dataDictionary)
         {
             var dict = new BilingualDictionary();
-            //Check if files exist.
-            if (!System.IO.File.Exists(dataDictionary))
-            {
-                System.IO.File.Create(dataDictionary);
-            }
-            else
+            if (System.IO.File.Exists(dataDictionary))
             {
                 string[] entries = System.IO.File.ReadAllLines(dataDictionary);
                 foreach (string entry in entries)
@@ -23,38 +18,33 @@ namespace CodingProject
                     string[] splitEntry = entry.Split(new Char[] { '|' });
                     dict.AddEntry(splitEntry[0], splitEntry[1]);
                 }
+                System.IO.File.Delete(dataDictionary + ".bak");
+            }
+            else
+            {
+                Console.WriteLine("No pre-existing dictionary found.");
             }
             return dict;
         }
-        // First focusing on the loading system.
-        public void saveData(string dataDictionary)
+        public void saveData(BilingualDictionary dict, string dataDictionary)
         {
             bool backupData()
             {
                 System.IO.File.Move(dataDictionary, dataDictionary + ".bak");
-                if (System.IO.File.Exists(dataDictionary))
-                {
-                    return false;
-                }
-                else
-                {
-                    System.IO.File.Create(dataDictionary);
-                    return true;
-                }
+                return (System.IO.File.Exists(dataDictionary));
             }
             bool backupSuccess = backupData();
-            var dict = new BilingualDictionary();
-            //Use IENumerable + Zip function.
             var mergedEntries = dict.Entries.Select(entry => entry.Key + "|" + entry.Value);
-            if (backupSuccess == true)
+            if (backupSuccess == false)
             {
                 foreach (var entry in mergedEntries)
                 {
-                    System.IO.File.AppendAllLines(dataDictionary, mergedEntries);
+                    System.IO.File.WriteAllLines(dataDictionary, mergedEntries);
                 }
             }
             else
             {
+                System.IO.File.Move(dataDictionary + ".bak", dataDictionary);
                 Console.WriteLine("Saving failed.");
             }
         }
