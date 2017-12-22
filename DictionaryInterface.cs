@@ -50,12 +50,12 @@ namespace CodingProject
             void UiEntry()
             {
                 Console.Clear();
-                Console.WriteLine("-----------------------\n|   Please select an option:");
-                Console.WriteLine("|    1. Show all");
-                Console.WriteLine("|    2. Create entry");
-                Console.WriteLine("|    3. Delete entry");
-                Console.WriteLine("|    3. Change entry");
-                Console.WriteLine("-----------------------");
+                Console.WriteLine("------------------------------\n|   Please select an option: |");
+                Console.WriteLine("|    1. Show all             |");
+                Console.WriteLine("|    2. Create entry         |");
+                Console.WriteLine("|    3. Delete entry         |");
+                Console.WriteLine("|    3. Change entry         |");
+                Console.WriteLine("------------------------------");
                 var inputEntry = Console.ReadLine();
                 switch (inputEntry)
                 {
