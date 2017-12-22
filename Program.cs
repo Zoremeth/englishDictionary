@@ -1,16 +1,16 @@
-﻿    using System.Collections.Generic;
-    using System;
+﻿using System.Collections.Generic;
+using System;
 
-    namespace CodingProject
+namespace CodingProject
+{
+    class Program
     {
-        class Program
+        static void Main(string[] args)
         {
-            static void Main (string[] args)
-            {
-                //Run the program
-                var dictionaryUi = new DictionaryInterface ();
-                dictionaryUi.Run ();
+            //Run the program
+            var dictionaryUi = new DictionaryInterface();
+            dictionaryUi.Run();
 
-            }
         }
     }
+}
