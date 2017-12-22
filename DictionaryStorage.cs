@@ -10,11 +10,13 @@ namespace CodingProject
         public BilingualDictionary loadData(string dataDictionary)
         {
             var dict = new BilingualDictionary();
-           //Check if files exist.
-           if(!System.IO.File.Exists(dataDictionary))
+            //Check if files exist.
+            if(!System.IO.File.Exists(dataDictionary))
             {
                 System.IO.File.Create(dataDictionary);
-            }else {
+            }
+            else 
+            {
                 string[] entries = System.IO.File.ReadAllLines(dataDictionary);
                 foreach (string entry in entries)
                 {
@@ -27,12 +29,15 @@ namespace CodingProject
         // First focusing on the loading system.
         public void saveData(string dataDictionary)
         {
-            bool backupData(){
+            bool backupData()
+            {
                 System.IO.File.Move(dataDictionary, dataDictionary + ".bak");
                 if(System.IO.File.Exists(dataDictionary))
-                    {
-                        return false; 
-                    }else {
+                {
+                    return false; 
+                }
+                else 
+                {
                     System.IO.File.Create(dataDictionary);
                     return true;
                 }  
@@ -41,12 +46,15 @@ namespace CodingProject
             var dict = new BilingualDictionary();
             //Use IENumerable + Zip function.
             var mergedEntries = dict.Entries.Select(entry => entry.Key + "|" + entry.Value);
-            if(backupSuccess == true){
+            if(backupSuccess == true)
+            {
                 foreach(var entry in mergedEntries)
                 {
                     System.IO.File.AppendAllLines(dataDictionary, mergedEntries);
                 }
-            }else{
+            }
+            else
+            {
                 Console.WriteLine("Saving failed.");
             }
         } 

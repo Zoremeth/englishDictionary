@@ -25,10 +25,12 @@ namespace CodingProject
                 if(correctedWord == "")
                 {
                     AddEntry(inputKey, correctedDefinition);
-                }else if(correctedDefinition == "")
+                }
+                else if(correctedDefinition == "")
                 {
                     Console.WriteLine("Please fill in a definition");
-                }else
+                }
+                else
                 AddEntry(correctedWord, correctedDefinition);
             }
         }
