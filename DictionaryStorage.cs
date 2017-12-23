@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace CodingProject
 {
@@ -10,13 +12,13 @@ namespace CodingProject
         public BilingualDictionary loadData(string dataDictionary)
         {
             var dict = new BilingualDictionary();
+            
             if (File.Exists(dataDictionary))
             {
-                string[] entries = File.ReadAllLines(dataDictionary);
-                foreach (string entry in entries)
+                var newDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(dataDictionary);
+                foreach ( var entry in newDict)
                 {
-                    string[] splitEntry = entry.Split(new Char[] { '|' });
-                    dict.AddEntry(splitEntry[0], splitEntry[1]);
+                    dict.AddEntry( entry.Key, entry.Value);
                 }
                 File.Delete(dataDictionary + ".bak");
             }
@@ -34,10 +36,9 @@ namespace CodingProject
                 return (File.Exists(dataDictionary));
             }
             bool backupSuccess = backupData();
-            var mergedEntries = dict.Entries.Select(entry => entry.Key + "|" + entry.Value);
             if (backupSuccess == false)
             {
-                File.WriteAllLines(dataDictionary, mergedEntries);
+                File.WriteAllText(dataDictionary, JsonConvert.SerializeObject(dict));
             }
             else
             {
