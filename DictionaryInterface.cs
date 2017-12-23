@@ -9,8 +9,8 @@ namespace CodingProject
         public void Run()
         {
             var dict = dictStorage.loadData(Path.Combine(Directory.GetCurrentDirectory(), "entries.txt"));
-            Console.WriteLine("Halt");
-            Console.ReadKey();
+            // Console.WriteLine("Halt");
+            // Console.ReadKey();
             Console.ForegroundColor = ConsoleColor.Green;
             var isRunning = true;
             do

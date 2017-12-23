@@ -32,7 +32,10 @@ namespace CodingProject
         {
             bool backupData()
             {
-                File.Move(dataDictionary, dataDictionary + ".bak");
+                if ( File.Exists(dataDictionary))
+                {
+                    File.Move(dataDictionary, dataDictionary + ".bak");
+                }
                 return (File.Exists(dataDictionary));
             }
             bool backupSuccess = backupData();
