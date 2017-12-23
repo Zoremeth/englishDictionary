@@ -8,7 +8,7 @@ namespace CodingProject
         DictionaryStorage dictStorage = new DictionaryStorage();
         public void Run()
         {
-            var dict = dictStorage.loadData(Path.Combine(Directory.GetCurrentDirectory(), "entries.txt"));
+            var dict = dictStorage.loadData(Path.Combine(Directory.GetCurrentDirectory(), "entries.json"));
             // Console.WriteLine("Halt");
             // Console.ReadKey();
             Console.ForegroundColor = ConsoleColor.Green;
@@ -108,7 +108,7 @@ namespace CodingProject
                         break;
                 }
             }
-            dictStorage.saveData(dict, Path.Combine(Directory.GetCurrentDirectory(), "entries.txt"));
+            dictStorage.saveData(dict, Path.Combine(Directory.GetCurrentDirectory(), "entries.json"));
         }
     }
 }

@@ -12,10 +12,9 @@ namespace CodingProject
         public BilingualDictionary loadData(string dataDictionary)
         {
             var dict = new BilingualDictionary();
-            
             if (File.Exists(dataDictionary))
             {
-                var newDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(dataDictionary);
+                var newDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText(dataDictionary));
                 foreach ( var entry in newDict)
                 {
                     dict.AddEntry( entry.Key, entry.Value);
@@ -41,7 +40,7 @@ namespace CodingProject
             bool backupSuccess = backupData();
             if (backupSuccess == false)
             {
-                File.WriteAllText(dataDictionary, JsonConvert.SerializeObject(dict));
+                File.WriteAllText(dataDictionary, JsonConvert.SerializeObject(new Dictionary<string, string>(dict.Entries)));
             }
             else
             {
